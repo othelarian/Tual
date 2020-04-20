@@ -1,16 +1,20 @@
 # Tual
-CM+Fate storytelling app
+storytelling app
 
-TODO list:
+## TODO list:
 
-* launch a window
+* check for the css
 * find a way to save app config
-* trying to launch two window in the same time
-* add a button to the first window
 * open a file selector to save a file
 * really save a file
 * integrate sqlite
 
-DONE list:
+## Notes
 
-Nothing right now!
+The  `windows` dir contains objects to handle the stages handling.
+
+The `controllers` dir contains classes which can react to the user inputs.
+
+Why separate both? because `windows` handles only at the window level,
+and `controllers` at a UI level, and because @sfxml doesn't work in the
+same file.

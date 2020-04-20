@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<HBox
+    xmlns="http://javafx.com/javafx/2.2"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="tual.windows.Splash"
+><children>
+    <VBox><children>
+        <!---->
+        <Text text="Tual" />
+        <Button text="test" />
+        <!--<Button text="test" onAction="#testcall" />-->
+        <!---->
+    </children></VBox>
+    <VBox><children>
+        <!---->
+        <!---->
+        <!---->
+    </children</VBox>
+</children></HBox>
