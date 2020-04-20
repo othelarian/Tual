@@ -7,18 +7,27 @@
 <HBox
     xmlns="http://javafx.com/javafx/2.2"
     xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="tual.windows.Splash"
+    fx:controller="tual.controllers.SplashController"
+    style="-fx-padding: 10"
 ><children>
-    <VBox><children>
+    <VBox styleClass="splash_side"><children>
+        <Text text="Tual" styleClass="splash_title" />
+        <Button text="New"  styleClass="tual_btn, splash_btn" onAction="#newStory" />
+        <Button text="Open" styleClass="tual_btn, splash_btn" onAction="#openStory" />
+    </children></VBox>
+    <!---->
+    <!-- TODO : separator? -->
+    <!---->
+    <VBox styleClass="splash_side"><children>
         <!---->
-        <Text text="Tual" />
-        <Button text="test" />
-        <!--<Button text="test" onAction="#testcall" />-->
+        <!-- TODO : add right side, with the list of the stories opened -->
+        <!---->
+        <Text text="test" />
+        <Text text="test" />
+        <Text text="test" />
+        <Text text="test" />
+        <Text text="test" />
+        <Text text="test" />
         <!---->
     </children></VBox>
-    <VBox><children>
-        <!---->
-        <!---->
-        <!---->
-    </children</VBox>
 </children></HBox>

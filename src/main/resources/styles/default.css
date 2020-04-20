@@ -1,11 +1,37 @@
-.classic_btn {
-    -fx-background-color: #09a;
-    -fx-font: bold 12pt serif;
+/* GLOBAL CSS */
+
+.tual_btn {
+    -fx-background-color: #09d;
+    -fx-font-weight: bold;
+    -fx-font-family: serif;
     -fx-text-fill: white;
-    -fx-border-width: 2px;
+    -fx-padding: 2px;
+    -fx-border-width: 0px;
     -fx-border-color: black;
 }
-.classic_btn:hover {
+.tual_btn:hover {
     -fx-background-color: white;
     -fx-text-fill: black;
 }
+
+/* SPLASH CSS */
+
+.splash_side {
+    -fx-spacing: 9px;
+    -fx-alignment: center;
+    -fx-padding: 20px;
+}
+
+.splash_btn {
+    -fx-font-size: 10pt;
+    -fx-min-width: 140px;
+    -fx-min-height: 30px;
+}
+
+.splash_title {
+    -fx-font-size: 32pt;
+    -fx-font-weight: bold;
+    -fx-font-family: serif;
+}
+
+/* CLASSIC CSS */

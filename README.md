@@ -8,6 +8,7 @@ storytelling app
 * open a file selector to save a file
 * really save a file
 * integrate sqlite
+* make a working textarea, to validate the use case
 
 ## Notes
 
