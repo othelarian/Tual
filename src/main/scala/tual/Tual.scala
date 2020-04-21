@@ -13,9 +13,7 @@ object Tual extends JFXApp {
   //
   //println(parameters)
 
-  // TODO : load prefs
-
-  var stylesheet = List(getClass.getResource("/styles/default.css").toExternalForm)
+  tual.tools.Prefs.checkPrefs
 
   windows.Splash.show(new PrimaryStage())
 
