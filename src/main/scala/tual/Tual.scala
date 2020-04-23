@@ -4,28 +4,12 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 
 object Tual extends JFXApp {
-  //
-  // TODO : find a way to save app config
-  //
+  tual.tools.Prefs.checkPrefs
 
   //
   // TODO : check the parameters
   //
-  //println(parameters)
-
-  tual.tools.Prefs.checkPrefs
 
   windows.Splash.show(new PrimaryStage())
 
-  def open() {
-    //
-    // TODO : handle opening a story
-    //
-    //val win1 = new windows.Classic()
-    //win1.show()
-    //
-    //val win2 = new windows.Classic()
-    //win2.show()
-    //
-  }
 }

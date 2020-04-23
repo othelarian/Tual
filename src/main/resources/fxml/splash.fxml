@@ -6,27 +6,16 @@
 <?import javafx.scene.shape.Line?>
 
 <HBox
-    xmlns="http://javafx.com/javafx/2.2"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="tual.controllers.SplashController"
-    style="-fx-padding: 10; -fx-alignment: center;"
+  xmlns="http://javafx.com/javafx/2.2"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="tual.controllers.SplashController"
+  style="-fx-padding: 10; -fx-alignment: center;"
 ><children>
-    <VBox styleClass="splash_side"><children>
-        <Text text="Tual" styleClass="splash_title" />
-        <Button text="New"  styleClass="tual_btn, splash_btn" onAction="#newStory" />
-        <Button text="Open" styleClass="tual_btn, splash_btn" onAction="#openStory" />
-    </children></VBox>
-    <Line startX="0" startY="0" endX="0" endY="120" />
-    <VBox styleClass="splash_side"><children>
-        <!---->
-        <!-- TODO : add right side, with the list of the stories opened -->
-        <!---->
-        <Text text="Last opened:" />
-        <Text text="1234567890123456789012346578901234567890" />
-        <Text text="test" />
-        <Text text="test" />
-        <Text text="test" />
-        <Text text="test" />
-        <!---->
-    </children></VBox>
+  <VBox styleClass="splash_side"><children>
+    <Text text="Tual" styleClass="splash_title" />
+    <Button text="New"  styleClass="tual_btn, splash_btn" onAction="#newStory" />
+    <Button text="Open" styleClass="tual_btn, splash_btn" onAction="#openStory" />
+  </children></VBox>
+  <Line startX="0" startY="0" endX="0" endY="120" />
+  <VBox styleClass="splash_side" fx:id="leftSide"></VBox>
 </children></HBox>

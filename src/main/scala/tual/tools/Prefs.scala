@@ -1,13 +1,14 @@
 package tual.tools
 
+import java.util.prefs.Preferences
+
 import scalafx.scene.control.{Alert, ButtonType}
 import scalafx.scene.control.Alert.AlertType
 import scalafx.application.Platform
 
 sealed trait PrefsStatus
-case class PrefsOk(val nb: Int) extends PrefsStatus
+case class PrefsOk(val list: Seq[String]) extends PrefsStatus
 case class PrefsNo() extends PrefsStatus
-//case class PrefsError(val error: String) extends PrefsStatus
 
 object Prefs {
   //
@@ -16,28 +17,64 @@ object Prefs {
 
   private var noPrefs = false
 
-  def checkPrefs(): PrefsStatus = {
+  def checkPrefs() {
+    //
+    //
+    // TODO : check if there is already a prefs file
+    //
+    // TODO : if there is a prefs file, try to read it
+    //
+    // TODO : if there is no prefs file, try to write it
+    //
+    // TODO : if something wrong happen, Left with why
+    //
+    // askNoPrefs("Error?")
+    //
+    // TODO : if it's all good, right with number of previously opened stories
+    //
+    //
+  }
+
+  def getPrefs(): PrefsStatus = {
     if (noPrefs) PrefsNo()
     else {
       //
-      //
-      // TODO : check if there is already a prefs file
-      //
-      // TODO : if there is a prefs file, try to read it
-      //
-      // TODO : if there is no prefs file, try to write it
-      //
-      // TODO : if something wrong happen, Left with why
-      //
-      // TODO : if it's all good, right with number of previously opened stories
+      // TODO : get the number of previously opened stories
       //
       //
-      // TODO : simulation that something bad happened
+      // TODO : limit previously opened stories title to 37 chars
       //
-      //askNoPrefs("issue ???")
+      // TODO : update the Seq included type, String isn't enough
+      //
+      //PrefsOk(Seq())
+      /*PrefsOk(Seq(
+        "Test 678 012 456 890 234 678 012",
+        "Value of Castle",
+        "Veni Vidi Vici, cesar rocks",
+        //"I'm the best story ever",
+        "I'm here!"))
+        */
       PrefsNo()
       //
     }
+  }
+
+  def showPrefs() {
+    //
+    // TODO : check, like with Splash, if the window is already open, to avoid 2 settings windows opened simultaneously
+    //
+    // TODO : lock the creation of the window if NoPrefs is active
+    //
+    println("showPrefs -> not implemented yet")
+    //
+  }
+
+  def pushStory() {
+    //
+    // TODO : handle the push in the previously opened stories historic of a new story
+    //
+    println("pushStory -> Not implemented yet")
+    //
   }
 
   private def askNoPrefs(e: String) {
@@ -50,11 +87,9 @@ object Prefs {
       buttonTypes = Seq(NoPrefContinue, NoPrefQuit)
     }
     alert.showAndWait() match {
-      case Some(NoPrefContinue) => goWithoutPrefs
+      case Some(NoPrefContinue) => noPrefs = true
       case Some(NoPrefQuit) => Platform.exit
       case _ => ()
     }
   }
-
-  def goWithoutPrefs() { noPrefs = true }
 }

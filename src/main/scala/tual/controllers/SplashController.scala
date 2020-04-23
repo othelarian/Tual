@@ -1,30 +1,47 @@
 package tual.controllers
 
-import scalafxml.core.macros.sfxml
 import scalafx.event.ActionEvent
+import scalafx.scene.control.Button
+import scalafx.scene.layout.VBox
+import scalafx.scene.text.Text
+import scalafxml.core.macros.sfxml
+
+import tual.tools.{PrefsOk, PrefsNo, OpenFromSplash}
 
 @sfxml
-class SplashController {
+class SplashController(leftSide: VBox) {
 
-  //
-  // TODO : limit previously opened stories title to 37 chars
-  //
+  leftSide.children = tual.tools.Prefs.getPrefs match {
+    case prefs: PrefsOk => {
+      if (prefs.list.isEmpty)
+        Seq(new Text("No past story"), new Text("available"))
+      else {
+        val stories = prefs.list.map { story =>
+          //
+          // TODO : update the story with the true type that Prefs return
+          //
+          new Button() {
+            text = story
+            styleClass = Seq("splash_story_title")
+            onAction = _ => tual.tools.Story.openStory(OpenFromSplash(Some(story)))
+          }
+        }
+        stories.prepended(new Text("Past stories:"))
+      }
+    }
+    case b: PrefsNo => {
+      Seq(
+        new Text("Preferences"),
+        new Text("not available"),
+      )
+    }
+  }
 
   def newStory(event: ActionEvent) {
-    //
-    // TODO : create a new story
-    //
-    println("new")
-    //
+    tual.tools.Story.newStory(OpenFromSplash())
   }
 
   def openStory(event: ActionEvent) {
-    //
-    // TODO : open the file selector
-    //
-    // TODO : handle opening the story
-    //
-    println("open story")
-    //
+    tual.tools.Story.openStory(OpenFromSplash())
   }
 }

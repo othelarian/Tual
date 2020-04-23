@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane
+  xmlns="http://javafx.com/javafx/2.2"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="tual.controllers.ClassicController"
+><children>
+  <!-- -->
+  <Text text="Classic Window" />
+  <!-- -->
+  <!-- TODO : define the design of the classic window -->
+  <!-- -->
+</children></StackPane>

@@ -16,16 +16,29 @@
 
 /* SPLASH CSS */
 
+.splash_btn {
+    -fx-font-size: 10pt;
+    -fx-min-width: 140px;
+    -fx-min-height: 30px;
+}
+
 .splash_side {
     -fx-spacing: 9px;
     -fx-alignment: center;
     -fx-padding: 20px;
 }
 
-.splash_btn {
-    -fx-font-size: 10pt;
-    -fx-min-width: 140px;
-    -fx-min-height: 30px;
+.splash_story_title {
+    -fx-background-color: white;
+    -fx-font-weight: normal;
+    -fx-font-family: serif;
+    -fx-padding: 1;
+    -fx-min-height: 22px;
+    -fx-min-width: 190px;
+}
+
+.splash_story_title:hover {
+    -fx-underline: true;
 }
 
 .splash_title {
