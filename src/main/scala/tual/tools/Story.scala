@@ -40,7 +40,15 @@ object Story {
         // TODO : open the story
         //
         //
-        tual.tools.Prefs.pushStory()
+        // TODO : test to switch between splash to classic
+        //
+        val c = new tual.windows.Classic()
+        c.show()
+        //
+        //
+        tual.windows.Splash.close
+        //
+        tual.tools.Prefs.pushStory
         //
     }
   }

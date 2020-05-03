@@ -5,6 +5,9 @@ import scalafx.scene.Scene
 import scalafx.stage.{Stage, StageStyle}
 import scalafxml.core.{ExplicitDependencies, FXMLView}
 
+// TODO : this import may be not mandatory
+import scalafx.scene.input.KeyCode.A
+
 class Classic {
 
   private val stage = new Stage(StageStyle.Decorated)
@@ -29,12 +32,34 @@ class Classic {
     ))
     //
     val root = FXMLView(resource, deps)
-    stage.scene = new Scene(root) {
+    val scene = new Scene(root) {
       fill = tual.tools.Style.currentBgColor
       stylesheets = tual.tools.Style.currentStyle
     }
     //
-    //stage.show()
+    // TODO : keyboard handle, only for test for now
+    scene.onKeyReleased = keyEvent => {
+      keyEvent.code match {
+        //
+        // TODO : handling A to switch back to Slash, for test
+        //
+        case A =>
+          //
+          println("eady to go back")
+          //
+          Splash.show()
+          //
+          stage.close
+          //
+        //
+        case _ => ()
+      }
+    }
+    //
+    //
+    stage.scene = scene
+    //
+    stage.show()
     //
   }
 }

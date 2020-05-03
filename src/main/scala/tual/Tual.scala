@@ -1,7 +1,8 @@
 package tual
 
 import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+// TODO : check if this import is still mandatory
+//import scalafx.application.JFXApp.PrimaryStage
 
 object Tual extends JFXApp {
   tual.tools.Prefs.checkPrefs
@@ -10,6 +11,6 @@ object Tual extends JFXApp {
   // TODO : check the parameters
   //
 
-  windows.Splash.show(new PrimaryStage())
+  windows.Splash.show
 
 }
