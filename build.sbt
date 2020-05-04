@@ -6,7 +6,17 @@ version := "1.0"
 
 scalacOptions += "-Ymacro-annotations"
 
-libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0"
+//libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0"
+
+// sqlite Deps ########################
+libraryDependencies ++= Seq(
+  "org.xerial"   % "sqlite-jdbc"    % "3.23.1",
+  "org.tpolecat" %% "doobie-core"   % "0.8.8",
+  "org.tpolecat" %% "doobie-hikari" % "0.8.8",
+  "org.tpolecat" %% "doobie-specs2" % "0.8.8"
+)
+
+// ScalaFX Deps #######################
 //libraryDependencies += "org.scalafx" %% "scalafx-extras" % "0.3.3"
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx"             % "12.0.2-R18",

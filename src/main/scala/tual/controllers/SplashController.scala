@@ -2,14 +2,23 @@ package tual.controllers
 
 import scalafx.event.ActionEvent
 import scalafx.scene.control.Button
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.text.Text
 import scalafxml.core.macros.sfxml
 
 import tual.tools.{PrefsOk, PrefsNo, OpenFromSplash}
 
+trait SplashControlInterface {
+  def activeSelector
+  def activeWaitor
+}
+
 @sfxml
-class SplashController(leftSide: VBox) {
+class SplashController(
+  leftSide: VBox,
+  selector: HBox,
+  waitor: VBox
+) extends SplashControlInterface {
 
   leftSide.children = tual.tools.Prefs.getPrefs match {
     case prefs: PrefsOk => {
@@ -37,11 +46,17 @@ class SplashController(leftSide: VBox) {
     }
   }
 
-  def newStory(event: ActionEvent) {
-    tual.tools.Story.newStory(OpenFromSplash())
+  def activeSelector = switch(true)
+  def activeWaitor = switch(false)
+
+  private def switch(select: Boolean) {
+    selector.visible = select
+    waitor.visible = !select
   }
 
-  def openStory(event: ActionEvent) {
+  def newStory(event: ActionEvent) =
+    tual.tools.Story.newStory(OpenFromSplash())
+
+  def openStory(event: ActionEvent) =
     tual.tools.Story.openStory(OpenFromSplash())
-  }
 }

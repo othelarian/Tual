@@ -55,14 +55,18 @@ object Story {
 
   def newStory(way: OpeningWay) {
     val stage = getStage(way)
-    getFile("New Story").showSaveDialog(stage) match {
+    val chooser = getFile("New Story")
+    chooser.initialFileName = "new_story.tual"
+    chooser.showSaveDialog(stage) match {
       case null => ()
       case selectedFile =>
         //
         println(selectedFile)
         //
-        //
         // TODO : create the sqlite file
+        //
+        FileDB.createFileDB(selectedFile.toString)
+        //
         //
         // TODO : if it's impossible to write on the selected dir, pop an alert
         //
@@ -78,7 +82,7 @@ object Story {
 
   private def getStage(way: OpeningWay): Stage = {
     way match {
-      case OpenFromSplash(_) => tual.windows.Splash.getStage.get
+      case OpenFromSplash(_) => tual.windows.Splash.stage
       case OpenFromMenu(stage, _) => stage
     }
   }

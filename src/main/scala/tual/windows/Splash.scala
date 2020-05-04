@@ -5,58 +5,60 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.application.Platform
 import scalafx.scene.Scene
 import scalafx.scene.input.KeyCode.Escape
-import scalafx.stage.{Stage, StageStyle}
-import scalafxml.core.{FXMLView, NoDependencyResolver}
+import scalafx.stage.StageStyle
+import scalafxml.core.{FXMLLoader, NoDependencyResolver}
+import javafx.{scene => jfxs}
+
+import tual.controllers.SplashControlInterface
 
 object Splash {
 
-  //
-  // TODO : try to keep the stage alive, maybe close method just hide it
-  //
-  private var used = false
-  private var splash_stage: Option[Stage] = None
+  val stage = new PrimaryStage {
+    title = "Tual - Startup"
+    alwaysOnTop = true
+    width = 460
+    height = 230
+    resizable = false
+  }
+  stage.initStyle(StageStyle.Undecorated)
 
-  def getStage(): Option[Stage] = splash_stage
-
-  def show() {
-    if (splash_stage == None) {
-      val stage = new PrimaryStage 
-      splash_stage = Some(stage)
-      if (!used) {
-        used = true
-        stage.title = "Tual - Startup"
-        stage.initStyle(StageStyle.Undecorated)
-        stage.alwaysOnTop = true
-        stage.width = 460
-        stage.height = 230
-        stage.resizable = false
-        val resource = getClass.getResource("/fxml/splash.fxml")
-        val root = FXMLView(resource, NoDependencyResolver)
-        root.onKeyReleased = keyEvent => {
-          keyEvent.code match {
-            case Escape => Platform.exit()
-            case _ => ()
-          }
-        }
-        stage.scene = new Scene(root) {
-          fill = tual.tools.Style.currentBgColor
-          stylesheets = tual.tools.Style.currentStyle
-        }
-      }
-      stage.show
-    }
-    else {
-      println("The splash screen is already on")
+  private val resource = getClass.getResource("/fxml/splash.fxml")
+  private val loader = new FXMLLoader(resource, NoDependencyResolver)
+  loader.load
+  private val root = loader.getRoot[jfxs.Parent]
+  private val controller = loader.getController[SplashControlInterface]
+  private val scene = new Scene(root) {
+    fill = tual.tools.Style.currentBgColor
+    stylesheets = tual.tools.Style.currentStyle
+  }
+  scene.onKeyReleased = keyEvent => {
+    keyEvent.code match {
+      case Escape => Platform.exit()
+      //
+      // TODO : handle test
+      //
+      case scalafx.scene.input.KeyCode.A =>
+        //
+        controller.activeWaitor
+        //
+        println("test from splash")
+        //
+      case scalafx.scene.input.KeyCode.Z =>
+        //
+        tual.tools.Story.openStory(
+          tual.tools.OpenFromSplash(Some("test"))
+        )
+        //
+        //
+      //
+      case _ => ()
     }
   }
+  stage.scene = scene
 
-  def close() {
-    splash_stage match {
-      case Some(stage) => {
-        stage.close()
-        splash_stage = None
-      }
-      case None => ()
-    }
+  def show = {
+    controller.activeSelector
+    stage.show
   }
+  def close = stage.close
 }

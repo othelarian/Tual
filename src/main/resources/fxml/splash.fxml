@@ -5,11 +5,19 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.shape.Line?>
 
-<HBox
+<StackPane
   xmlns="http://javafx.com/javafx/2.2"
   xmlns:fx="http://javafx.com/fxml/1"
   fx:controller="tual.controllers.SplashController"
+
+>
+<children>
+
+
+<HBox
+  fx:id="selector"
   style="-fx-padding: 10; -fx-alignment: center;"
+  visible="true"
 ><children>
   <VBox styleClass="splash_side"><children>
     <Text text="Tual" styleClass="splash_title" />
@@ -19,3 +27,14 @@
   <Line startX="0" startY="0" endX="0" endY="120" />
   <VBox styleClass="splash_side" fx:id="leftSide"></VBox>
 </children></HBox>
+
+
+<VBox
+  fx:id="waitor"
+  style="-fx-padding: 10; -fx-alignment: center;"
+  visible="false"
+><children>
+  <Text text="Initializing your Story..." />
+</children></VBox>
+
+</children></StackPane>

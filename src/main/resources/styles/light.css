@@ -1,9 +1,19 @@
 /* GLOBAL CSS */
 
+@font-face {
+    font-family: "berylium";
+    src: url("Berylium.ttf");
+}
+
+Text {
+    -fx-font-family: "berylium";
+    -fx-font-size: 10pt;
+}
+
 .tual_btn {
     -fx-background-color: #09d;
     -fx-font-weight: bold;
-    -fx-font-family: serif;
+    -fx-font-family: "berylium";
     -fx-text-fill: white;
     -fx-padding: 2px;
     -fx-border-width: 0px;
@@ -31,7 +41,7 @@
 .splash_story_title {
     -fx-background-color: white;
     -fx-font-weight: normal;
-    -fx-font-family: serif;
+    -fx-font-family: "berylium";
     -fx-padding: 1;
     -fx-min-height: 22px;
     -fx-min-width: 190px;
@@ -44,7 +54,7 @@
 .splash_title {
     -fx-font-size: 32pt;
     -fx-font-weight: bold;
-    -fx-font-family: serif;
+    -fx-font-family: "berylium";
 }
 
 /* CLASSIC CSS */

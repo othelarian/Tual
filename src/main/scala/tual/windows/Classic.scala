@@ -47,7 +47,7 @@ class Classic {
           //
           println("eady to go back")
           //
-          Splash.show()
+          Splash.show
           //
           stage.close
           //
