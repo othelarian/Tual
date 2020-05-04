@@ -32,7 +32,8 @@ class SplashController(
           new Button() {
             text = story
             styleClass = Seq("splash_story_title")
-            onAction = _ => tual.tools.Story.openStory(OpenFromSplash(Some(story)))
+            onAction = _ => tual.tools.Story.openStory(
+              OpenFromSplash(Some(story)))
           }
         }
         stories.prepended(new Text("Past stories:"))

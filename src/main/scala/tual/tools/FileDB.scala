@@ -20,7 +20,7 @@ object FileDB {
   //
   // TODO : define endpoints
   //
-  def createFileDB(path: String) = {//: Transactor = {
+  def createFileDB(path: String): Either[Throwable, Int] = {
     //
     // TODO : handle file creation
     //
@@ -30,26 +30,19 @@ object FileDB {
       "org.sqlite.JDBC", "jdbc:sqlite:"++path, "", ""
     )
     //
+    //
     // TODO : create the tables
     //
+    // TODO : fill the db with some basic datas
     //
     //transactor
     //
-    sql"select 42"
+    //sql"select 42"
+    sql"select * from sqlite_master"
       .query[Int].unique
       .attempt
       .transact(transactor)
-      .unsafeRunSync match {
-        case Left(e) =>
-          //
-          println(e)
-          //
-        case Right(v) =>
-          //
-          println("Hurray!")
-          println(v)
-          //
-      }
+      .unsafeRunSync
     //
   }
 }

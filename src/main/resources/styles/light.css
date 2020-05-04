@@ -57,4 +57,19 @@ Text {
     -fx-font-family: "berylium";
 }
 
+.splash_waitor {
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-spacing: 20;
+}
+
+.splash_waiting_dots {
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+.splash_waiting_dot {
+    -fx-fill: #09d;
+}
+
 /* CLASSIC CSS */

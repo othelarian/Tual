@@ -4,6 +4,9 @@ import scalafx.Includes._
 import scalafx.stage.{FileChooser, Stage}
 import scalafx.stage.FileChooser.ExtensionFilter
 
+import tual.windows.Splash
+import scala.util.Try
+
 sealed abstract class OpeningWay(val uri: Option[String])
 case class OpenFromSplash(val selUri: Option[String] = None) extends OpeningWay(selUri)
 case class OpenFromMenu(val stage: Stage, val selUri: Option[String] = None) extends OpeningWay(selUri)
@@ -46,9 +49,9 @@ object Story {
         c.show()
         //
         //
-        tual.windows.Splash.close
+        Splash.close
         //
-        tual.tools.Prefs.pushStory
+        Prefs.pushStory
         //
     }
   }
@@ -61,11 +64,53 @@ object Story {
       case null => ()
       case selectedFile =>
         //
-        println(selectedFile)
+        // TODO : if hte file exists, delete it
+        //
+        val prep = selectedFile.isFile match {
+          case true =>
+            //
+            Try(selectedFile.delete).isSuccess
+            //
+            // TODO : test is the delete failed
+            //
+            false
+            //
+          case false => true
+        }
+        if (prep) {
+          //
+          // TODO : continue
+          //
+        } else {
+          //
+          // TODO : failed to delete, catch this
+          //
+          stage.alert
+          //
+          //
+        }
+        //
         //
         // TODO : create the sqlite file
         //
-        FileDB.createFileDB(selectedFile.toString)
+        val res = FileDB.createFileDB(selectedFile.toString)
+        res match {
+          case Left(e) =>
+            //
+            // TODO : everything goes wrong
+            //
+            println(e)
+            //
+            // TODO : can't call Splash, we don't konw if this come from splash or not
+            //Splash.switchToSelector
+            //
+          case Right(v) =>
+            //
+            // TODO : everything goes fine
+            //
+            println(v)
+            //
+        }
         //
         //
         // TODO : if it's impossible to write on the selected dir, pop an alert
@@ -82,7 +127,9 @@ object Story {
 
   private def getStage(way: OpeningWay): Stage = {
     way match {
-      case OpenFromSplash(_) => tual.windows.Splash.stage
+      case OpenFromSplash(_) =>
+        Splash.switchToWaitor
+        Splash.stage
       case OpenFromMenu(stage, _) => stage
     }
   }

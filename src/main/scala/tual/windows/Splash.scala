@@ -60,5 +60,7 @@ object Splash {
     controller.activeSelector
     stage.show
   }
+  def switchToSelector = controller.activeSelector
+  def switchToWaitor = controller.activeWaitor
   def close = stage.close
 }

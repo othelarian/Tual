@@ -3,13 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.*?>
 
 <StackPane
   xmlns="http://javafx.com/javafx/2.2"
   xmlns:fx="http://javafx.com/fxml/1"
   fx:controller="tual.controllers.SplashController"
-
 >
 <children>
 
@@ -31,10 +30,16 @@
 
 <VBox
   fx:id="waitor"
-  style="-fx-padding: 10; -fx-alignment: center;"
+  styleClass="splash_waitor"
   visible="false"
 ><children>
   <Text text="Initializing your Story..." />
+  <Line startX="0" startY="0" endX="120" endY="0" />
+  <HBox styleClass="splash_waiting_dots"><children>
+    <Circle styleClass="splash_waiting_dot" radius="10" />
+    <Circle styleClass="splash_waiting_dot" radius="10" />
+    <Circle styleClass="splash_waiting_dot" radius="10" />
+  </children></HBox>
 </children></VBox>
 
 </children></StackPane>
